@@ -3,32 +3,16 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-    <changeSet id="createTableRoles" author="ArtsemAverkov">
-        <createTable tableName="roles">
-            <column name="id" type="BIGINT" autoIncrement="true">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="name" type="VARCHAR(255)"/>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="createTableUsers" author="ArtemAverkov">
+    <changeSet id="createTableUser" author="ArtsemAverkov">
         <createTable tableName="users">
             <column name="id" type="BIGINT" autoIncrement="true">
-                <constraints primaryKey="true"/>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="username" type="VARCHAR(255)"/>
-            <column name="password" type="VARCHAR(255)"/>
-            <column name="role_id" type="BIGINT"/>
+            <column name="surname" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="role" type="VARCHAR(50)"/>
         </createTable>
-    </changeSet>
-
-    <changeSet id="addForeignKey" author="ArtemAverkov">
-        <addForeignKeyConstraint baseTableName="users"
-                                 baseColumnNames="role_id"
-                                 referencedTableName="roles"
-                                 referencedColumnNames="id"
-                                 constraintName="fk_user_roles_user"/>
     </changeSet>
 </databaseChangeLog>
 

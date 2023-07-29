@@ -3,11 +3,14 @@ spring:
     name: user-api
   jpa:
     hibernate:
-      ddl-auto: create
-    database-platform: org.hibernate.dialect.MySQL5Dialect
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/user1
+    url: jdbc:mysql://127.0.0.1:3306/user
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/changelog.xml
