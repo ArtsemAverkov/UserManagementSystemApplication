@@ -13,6 +13,21 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.Optional;
 
+/**
+ * ServiceLogAspect is an aspect class responsible for logging service methods in the User Management System application.
+ * It extends the BaseAspect class to leverage common logging functionality.
+ *
+ * <p>The class uses AspectJ annotations to define pointcuts for the methods it wants to intercept:
+ * - @Pointcut("execution(* by.it.academy.UserManagementSystem.service..*(..))"): The pointcut for service methods.
+ *
+ * <p>The class logs the following information for service methods:
+ * - Before the execution of service methods, it logs method signatures and their arguments.
+ * - After the execution of service methods, it logs method signatures, the returned result, and their arguments.
+ *
+ * <p>The log messages use the predefined logging patterns from the BaseAspect class:
+ * - BEFORE_SERVICE_PATTERN: The pattern for logging service method arguments before their execution.
+ * - AFTER_SERVICE_PATTERN: The pattern for logging service method results and arguments after their execution.
+ */
 
 @Slf4j
 @Aspect

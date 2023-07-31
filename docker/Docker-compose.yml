@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  userManagementSystem:
+    build:
+      context: services/userManagementSystem
+      dockerfile: Dockerfile
+    image: 'user-management.0.0.4'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mySql/test
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: userpassword
+      SPRING_DATASOURCE_DRIVER-CLASS-NAME: com.mysql.cj.jdbc.Driver
+    ports:
+      - 8080:8080
+    depends_on:
+      - mySql
+
+  mySql:
+    image: mysql:8.0
+    container_name: 'mysql.0.0.4'
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    ports:
+     - "3307:3306"

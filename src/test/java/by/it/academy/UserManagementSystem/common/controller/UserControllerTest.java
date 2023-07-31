@@ -33,6 +33,22 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * This class contains test cases to validate the UserController using JUnit 5 and Spring's MockMvc.
+ * The class is annotated with @WebMvcTest(UserController.class) to only test the UserController
+ * while relying on the Spring TestContext Framework.
+ *
+ * <p>The class uses @MockBean to create a mock instance of the UserService to isolate the controller from the service layer.
+ * It also includes @Autowired MockMvc to perform HTTP requests and validate responses.
+ *
+ * <p>The class defines five test methods:
+ * - create: Tests the create method of UserController to verify the successful creation of a user.
+ * - read: Tests the read method of UserController to verify the retrieval of a user by ID.
+ * - delete: Tests the delete method of UserController to verify the successful deletion of a user.
+ * - update: Tests the update method of UserController to verify the successful update of a user.
+ * - readAll: Tests the readAll method of UserController to verify the retrieval of all users with pagination.
+ */
+
 @ContextConfiguration(classes = UserManagementSystemApplication.class)
 @WebMvcTest(UserController.class)
 @ExtendWith(ValidParameterResolverUser.class)
@@ -46,6 +62,12 @@ public class UserControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    /**
+     * Test the create method of UserController to verify the successful creation of a user.
+     *
+     * @param userDto The UserDto object containing user information for the test.
+     * @throws Exception if an exception occurs during the test.
+     */
     @Test
     public void create(UserDto userDto) throws Exception {
         when(userService.create(any(UserDto.class))).thenReturn(RequestId.VALUE_1.getValue());
@@ -57,6 +79,13 @@ public class UserControllerTest {
         verify(userService).create(any(UserDto.class));
     }
 
+    /**
+     * Test the read method of UserController to verify the retrieval of a user by ID.
+     *
+     * @param userDto The UserDto object containing user information for the test.
+     * @throws Exception if an exception occurs during the test.
+     */
+
     @Test
     public void read(UserDto userDto) throws Exception {
         User user = buildUser(userDto);
@@ -67,6 +96,13 @@ public class UserControllerTest {
         verify(userService).read(RequestId.VALUE_1.getValue());
     }
 
+
+    /**
+     * Test the delete method of UserController to verify the successful deletion of a user.
+     *
+     * @param userDto The UserDto object containing user information for the test.
+     * @throws Exception if an exception occurs during the test.
+     */
     @Test
     public void delete(UserDto userDto) throws Exception {
         when(userService.delete(RequestId.VALUE_1.getValue())).thenReturn(true);
@@ -75,6 +111,13 @@ public class UserControllerTest {
                 .andExpect(content().string("true"));
         verify(userService).delete(RequestId.VALUE_1.getValue());
     }
+
+    /**
+     * Test the update method of UserController to verify the successful update of a user.
+     *
+     * @param userDto The UserDto object containing user information for the test.
+     * @throws Exception if an exception occurs during the test.
+     */
 
     @Test
     public void update(UserDto userDto) throws Exception {
@@ -85,6 +128,13 @@ public class UserControllerTest {
                 .andExpect(status().isOk());
         verify(userService).update(any(UserDto.class), any());
     }
+
+    /**
+     * Test the readAll method of UserController to verify the retrieval of all users with pagination.
+     *
+     * @param userDto The UserDto object containing user information for the test.
+     * @throws Exception if an exception occurs during the test.
+     */
 
     @Test
     public void readAll(UserDto userDto) throws Exception {
