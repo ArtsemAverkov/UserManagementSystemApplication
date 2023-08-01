@@ -5,7 +5,7 @@ services:
     build:
       context: services/userManagementSystem
       dockerfile: Dockerfile
-    image: 'user-management.0.0.4'
+    image: 'user-management.0.0.5'
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mySql/test
       SPRING_DATASOURCE_USERNAME: user
@@ -18,7 +18,7 @@ services:
 
   mySql:
     image: mysql:8.0
-    container_name: 'mysql.0.0.4'
+    container_name: 'mysql.0.0.5'
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
