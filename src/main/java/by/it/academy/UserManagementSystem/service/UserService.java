@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserService {
     long create(UserDto user);
-    User read (long id) throws Exception;
+    User read (long id);
     boolean update (UserDto user, Long id);
     boolean delete (Long id);
     List<User> readAll (Pageable pageable);

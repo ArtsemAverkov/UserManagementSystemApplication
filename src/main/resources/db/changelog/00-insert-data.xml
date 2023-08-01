@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="insertData" author="ArtemAverkovs">
+
+        <insert tableName="users">
+            <column name="id" valueNumeric="1"/>
+            <column name="username" value="admin"/>
+            <column name="surname" value="AdminSurname"/>
+            <column name="email" value="admin@mail.com"/>
+            <column name="role" value="ADMINISTRATOR"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="id" valueNumeric="2"/>
+            <column name="username" value="sale_user"/>
+            <column name="surname" value="SaleSurname"/>
+            <column name="email" value="sale_user@mail.com"/>
+            <column name="role" value="SALE_USER"/>
+        </insert>
+
+
+        <insert tableName="users">
+            <column name="id" valueNumeric="3"/>
+            <column name="username" value="customer_user"/>
+            <column name="surname" value="CustomerSurname"/>
+            <column name="email" value="customer_user@mail.com"/>
+            <column name="role" value="CUSTOMER_USER"/>
+        </insert>
+
+
+        <insert tableName="users">
+            <column name="id" valueNumeric="4"/>
+            <column name="username" value="secure_api_user"/>
+            <column name="surname" value="SecureAPISurname"/>
+            <column name="email" value="secure_api_user@mail.com"/>
+            <column name="role" value="SECURE_API_USER"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>
